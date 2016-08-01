@@ -52,6 +52,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Math\MathUtil.cs" />
+    <Compile Include="Math\Matrix4x4.cs" />
+    <Compile Include="Math\Point2D.cs" />
+    <Compile Include="Math\Vector3D.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
