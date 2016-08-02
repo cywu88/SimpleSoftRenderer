@@ -33,6 +33,11 @@ namespace SoftRenderer.RenderData
         /// 1/z，用于顶点信息的透视校正
         public float onePerZ;
 
+        public Vertex()
+        {
+
+        }
+
         public Vertex(Vector3D point, Vector3D normal, float u, float v, float r, float g, float b)
         {
             this.point = point;
