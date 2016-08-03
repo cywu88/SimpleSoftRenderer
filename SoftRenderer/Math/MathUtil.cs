@@ -103,6 +103,25 @@ namespace SoftRenderer.Math
             }
         }
 
+        /// <summary>
+        /// 获取投影矩阵 dx风格， cvv为 x-1,1  y-1,1  z0,1
+        /// </summary>
+        /// <param name="fov">观察角，弧度</param>
+        /// <param name="aspect">长宽比</param>
+        /// <param name="zn">近裁z</param>
+        /// <param name="zf">远裁z</param>
+        /// <returns></returns>
+        public static Matrix4x4 GetProjection(float fov, float aspect, float zn, float zf)
+        {
+            Matrix4x4 p = new Matrix4x4();
+            p.SetZero();
+            p[0, 0] = (float)(1 / (System.Math.Tan(fov * 0.5f) * aspect));
+            p[1, 1] = (float)(1 / System.Math.Tan(fov * 0.5f));
+            p[2, 2] = zf / (zf - zn);
+            p[2, 3] = 1f;
+            p[3, 2] = (zn * zf) / (zn - zf);
+            return p;
+        }
 
         /// <summary>
         /// 获取视矩阵

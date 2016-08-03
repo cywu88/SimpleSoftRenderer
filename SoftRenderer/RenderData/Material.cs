@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SoftRenderer.RenderData
 {
-    public class Material
+    public struct Material
     {
         /// <summary>
         /// 自发光颜色值

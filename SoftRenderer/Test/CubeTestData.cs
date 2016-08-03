@@ -119,6 +119,7 @@ namespace SoftRenderer.Test
 
         //材质
         public static Material mat = new Material(new Color(0, 0, 0.1f), 0.1f, new Color(0.3f, 0.3f, 0.3f), new Color(1, 1, 1), 99);
+ 
     }
 
 

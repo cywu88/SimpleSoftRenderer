@@ -37,7 +37,7 @@ namespace SoftRenderer {
             InitializeComponent();
             try
             {
-                System.Drawing.Image img = System.Drawing.Image.FromFile("../../Texture/cc.jpg");
+                System.Drawing.Image img = System.Drawing.Image.FromFile("../../Resource/fox.jpg");
                 _texture = new Bitmap(img, 256, 256);
             }
             catch (Exception)
@@ -45,6 +45,11 @@ namespace SoftRenderer {
                 _texture = new Bitmap(256, 256);
                 initTexture();
             }
+
+            //
+            _currentMode = RenderMode.Textured;
+            _lightMode = LightMode.On;
+            _textureFilterMode = TextureFilterMode.Bilinear;
 
             _frameBuff = new Bitmap(this.MaximumSize.Width, this.MaximumSize.Height);
             _frameG = Graphics.FromImage(_frameBuff);
@@ -96,6 +101,13 @@ namespace SoftRenderer {
                 ClearBuff();
                 rot += 0.05f;
 
+                Matrix4x4 m = MathUtil.GetRotateX(rot) * MathUtil.GetRotateY(rot) * MathUtil.GetTranslate(0, 0, 10);
+
+                Matrix4x4 v = MathUtil.GetView(_camera.pos, _camera.lookAt, _camera.up);
+                Matrix4x4 p = MathUtil.GetProjection(_camera.fov, _camera.aspect, _camera.zn, _camera.zf);
+                //
+                Draw(m, v, p);
+
 
                 if (g == null)
                 {
@@ -134,12 +146,7 @@ namespace SoftRenderer {
             SetMVTransform(m, v, ref p1);
             SetMVTransform(m, v, ref p2);
             SetMVTransform(m, v, ref p3);
-
-            //变换到齐次剪裁空间
-            SetProjectionTransform(p, ref p1);
-            SetProjectionTransform(p, ref p2);
-            SetProjectionTransform(p, ref p3);
-
+ 
             //在相机空间进行背面消隐
             if (BackFaceCulling(p1, p2, p3) == false)
             {
@@ -150,6 +157,17 @@ namespace SoftRenderer {
             SetProjectionTransform(p, ref p1);
             SetProjectionTransform(p, ref p2);
             SetProjectionTransform(p, ref p3);
+
+            //裁剪
+            if (Clip(p1) == false || Clip(p2) == false || Clip(p3) == false)
+            {
+                return;
+            }
+
+            //变换到屏幕坐标
+            TransformToScreen(ref p1);
+            TransformToScreen(ref p2);
+            TransformToScreen(ref p3);
 
 
             //--------------------光栅化阶段---------------------------

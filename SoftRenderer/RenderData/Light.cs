@@ -8,7 +8,7 @@ using SoftRenderer.Math;
 
 namespace SoftRenderer.RenderData
 {
-    public class Light
+    public struct Light
     {
         /// <summary>
         /// 灯光世界坐标

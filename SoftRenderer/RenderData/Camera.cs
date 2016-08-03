@@ -8,7 +8,7 @@ using SoftRenderer.Math;
 
 namespace SoftRenderer.RenderData
 {
-    public class Camera
+    public struct Camera
     {
         public Vector3D pos;
         public Vector3D lookAt;

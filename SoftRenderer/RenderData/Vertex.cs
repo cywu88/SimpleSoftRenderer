@@ -12,7 +12,7 @@ namespace SoftRenderer.RenderData
     /// <summary>
     /// 顶点信息
     /// </summary>
-    public class Vertex
+    public struct Vertex
     {
         // 顶点位置
         public Vector3D point;
@@ -33,10 +33,14 @@ namespace SoftRenderer.RenderData
         /// 1/z，用于顶点信息的透视校正
         public float onePerZ;
 
-        public Vertex()
-        {
+        //public Vertex()
+        //{
+        //    this.point = new Vector3D();
+        //    this.vcolor = new Color();
+        //    this.normal = new Vector3D();
+        //    this.lightingColor  = new Color();
+        //}
 
-        }
 
         public Vertex(Vector3D point, Vector3D normal, float u, float v, float r, float g, float b)
         {

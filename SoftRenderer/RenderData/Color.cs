@@ -9,7 +9,7 @@ using SoftRenderer.Math;
 
 namespace SoftRenderer.RenderData
 {
-    public class Color
+    public struct Color
     {
         private float _r;
         private float _b;
@@ -33,10 +33,10 @@ namespace SoftRenderer.RenderData
             set { _b = value; }
         }
 
-        public Color()
-        {
+        //public Color()
+        //{
 
-        }
+        //}
 
         public Color(float r, float g, float b)
         {

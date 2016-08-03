@@ -44,9 +44,9 @@ namespace SoftRenderer.Math
             //nm.SetZero();
             for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; i < 4; j++)
+                for (int j = 0; j < 4; j++)
                 {
-                    for (int k = 0; i < 4; k++)
+                    for (int k = 0; k < 4; k++)
                     {
                         nm._m[i, j] += lhs._m[i, k] * rhs._m[k, j];
                     }

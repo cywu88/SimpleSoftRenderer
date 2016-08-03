@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace SoftRenderer.Math
 {
-    public class Vector3D
+    public struct Vector3D
     {
         public float x;
         public float y;
         public float z;
         public float w;
 
-        public Vector3D()
-        {
-            this.x = 0;
-            this.y = 0;
-            this.z = 0;
-            this.w = 0;
-        }
+        //public Vector3D()
+        //{
+        //    this.x = 0;
+        //    this.y = 0;
+        //    this.z = 0;
+        //    this.w = 0;
+        //}
 
         public Vector3D(float x, float y, float z, float w)
         {
